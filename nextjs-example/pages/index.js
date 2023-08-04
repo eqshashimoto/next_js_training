@@ -1,20 +1,38 @@
 import Link from "next/link";
-import fetch from "isomorphic-unfetch";
+// import fetch from "isomorphic-unfetch";
+
+const shows = {
+    "id": 1,
+  "name": "batman",
+}
+
 
 const Index = props => (
   <div>
     <h1>Batman TV Shows</h1>
     <ul>
-      {props.shows.map(show => (
-        <li key={show.id}>
-          <Link href="/shows/[id]" as={`/shows/${show.id}`}>
-            <a>{show.name}</a>
-          </Link>
-        </li>
+      {shows.map(show => (
+        <li key={show.id}>{show.name}</li>
       ))}
     </ul>
   </div>
 );
+
+
+// const Index = props => (
+//   <div>
+//     <h1>Batman TV Shows</h1>
+//     <ul>
+//       {props.shows.map(show => (
+//         <li key={show.id}>
+//           <Link href="/shows/[id]" as={`/shows/${show.id}`}>
+//             <a>{show.name}</a>
+//           </Link>
+//         </li>
+//       ))}
+//     </ul>
+//   </div>
+// );
 
 Index.getInitialProps = async function() {
   const res = await fetch("https://api.tvmaze.com/search/shows?q=batman");
