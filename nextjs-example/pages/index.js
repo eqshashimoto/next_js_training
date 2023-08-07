@@ -7,16 +7,16 @@ const shows = {
 }
 
 
-const Index = props => (
-  <div>
-    <h1>Batman TV Shows</h1>
-    <ul>
-      {shows.map(show => (
-        <li key={show.id}>{show.name}</li>
-      ))}
-    </ul>
-  </div>
-);
+// const Index = props => (
+//   <div>
+//     <h1>Batman TV Shows</h1>
+//     <ul>
+//       {shows.map(show => (
+//         <li key={show.id}>{show.name}</li>
+//       ))}
+//     </ul>
+//   </div>
+// );
 
 
 // const Index = props => (
@@ -34,6 +34,12 @@ const Index = props => (
 //   </div>
 // );
 
+const Index = () => {
+  return <h1>Hello World</h1>;
+};
+export default Index;
+
+
 Index.getInitialProps = async function() {
   const res = await fetch("https://api.tvmaze.com/search/shows?q=batman");
   const data = await res.json();
@@ -41,9 +47,7 @@ Index.getInitialProps = async function() {
   return { shows: data.map(entry => entry.show) };
 };
 
-export default Index;
+console.log(Index.getInitialProps);
 
-// const Index = () => {
-//   return <h1>Hello World</h1>;
-// };
 // export default Index;
+
